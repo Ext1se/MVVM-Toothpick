@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data class="ProjectsBinding">
+
+        <import
+            alias="V"
+            type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.elegion.test.behancer.common.BaseProjectsViewModel" />
+
+        <variable
+            name="state"
+            type="android.os.Parcelable"/>
+
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:onRefresh="@{vm.onRefreshListener}"
+        bind:refreshState="@{vm.isLoading}">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{vm.isErrorVisible ? V.GONE : V.VISIBLE}"
+                bind:clickHandler="@{vm.onItemClickListener}"
+                bind:data="@{vm.projects}"
+                bind:layoutState="@{state}"/>
+
+            <include
+                layout="@layout/v_error"
+                android:id="@+id/v_error"
+                android:visibility="@{vm.isErrorVisible ? V.VISIBLE : V.GONE}" />
+
+        </FrameLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</layout>

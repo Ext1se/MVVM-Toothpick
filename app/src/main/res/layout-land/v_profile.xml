@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.elegion.test.behancer.R"/>
+        <import type="com.elegion.test.behancer.utils.DateUtils"/>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="user"
+            type="com.elegion.test.behancer.data.model.user.User" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/view_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/content_description_details"
+            tools:src="@drawable/example"
+            app:imageUrl="@{user.image.photoUrl}"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/iv_profile"
+            android:layout_toRightOf="@+id/iv_profile"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_display_name_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                tools:text="Igorek"
+                android:text="@{user.displayName}"/>
+
+            <TextView
+                android:id="@+id/tv_username_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="IgorekDetails"
+                android:text="@{user.username}"/>
+
+            <TextView
+                android:id="@+id/tv_created_on_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="01/01/2018"
+                android:text="@{DateUtils.format(user.createdOn)}"/>
+
+            <TextView
+                android:id="@+id/tv_location_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="City, Country"
+                android:text="@{user.location}"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/b_projects"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawable="@{R.drawable.ic_folder}"
+                android:text="@string/projects"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/colorPrimary"
+                android:onClick="@{listener}"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
