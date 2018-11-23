@@ -6,15 +6,10 @@ import com.elegion.test.behancer.AppDelegate;
 import com.elegion.test.behancer.common.SingleFragmentActivity;
 import com.elegion.test.behancer.data.Storage;
 
-public class ProjectsActivity extends SingleFragmentActivity implements Storage.StorageOwner {
+public class ProjectsActivity extends SingleFragmentActivity{
 
     @Override
     protected Fragment getFragment() {
         return ProjectsFragment.newInstance();
-    }
-
-    @Override
-    public Storage obtainStorage() {
-        return ((AppDelegate) getApplicationContext()).getStorage();
     }
 }
