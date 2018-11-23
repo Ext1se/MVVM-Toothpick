@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 import com.elegion.test.behancer.data.Storage;
+import com.elegion.test.behancer.data.api.BehanceApi;
 import com.elegion.test.behancer.data.model.project.Project;
 import com.elegion.test.behancer.data.model.project.ProjectResponse;
 import com.elegion.test.behancer.data.model.project.RichProject;
@@ -22,10 +23,11 @@ public abstract class BaseProjectsViewModel extends BaseViewModel {
     protected LiveData<PagedList<RichProject>> mProjects;
     protected ProjectsAdapter.OnItemClickListener mOnItemClickListener;
 
-    public BaseProjectsViewModel(Storage storage, ProjectsAdapter.OnItemClickListener onItemClickListener)
+    public BaseProjectsViewModel(Storage storage, BehanceApi api, ProjectsAdapter.OnItemClickListener onItemClickListener)
     {
         super();
         mStorage = storage;
+        mApi = api;
         mOnItemClickListener = onItemClickListener;
     }
 

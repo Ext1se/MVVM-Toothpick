@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.elegion.test.behancer.data.Storage;
+import com.elegion.test.behancer.data.api.BehanceApi;
 
 import io.reactivex.disposables.Disposable;
 
@@ -18,6 +19,7 @@ public abstract class BaseViewModel extends ViewModel{
 
     protected Disposable mDisposable;
     protected Storage mStorage;
+    protected BehanceApi mApi;
 
     private MutableLiveData<Boolean> mIsLoading = new MutableLiveData<>();
     private MutableLiveData<Boolean> mIsErrorVisible = new MutableLiveData<>();
