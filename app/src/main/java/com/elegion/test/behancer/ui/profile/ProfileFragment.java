@@ -18,15 +18,16 @@ import javax.inject.Named;
 import toothpick.Scope;
 import toothpick.Toothpick;
 
+import static com.elegion.test.behancer.di.models.ProfileFragmentModule.PROFILE_USERNAME;
+
 public class ProfileFragment extends BaseFragment {
 
     public static final String PROFILE_KEY = "PROFILE_KEY";
-    public static final String CLICK_PROFILE = "CLICK_PROFILE";
 
     @Inject
     ProfileViewModel mProfileViewModel;
     @Inject
-    @Named(PROFILE_KEY)
+    @Named(PROFILE_USERNAME)
     String mUsername;
 
     public static ProfileFragment newInstance(Bundle args) {

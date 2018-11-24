@@ -18,13 +18,11 @@ import io.reactivex.schedulers.Schedulers;
 public class ProfileViewModel extends BaseViewModel {
 
     private String mUsername;
-    private BehanceApi mApi;
-
     private View.OnClickListener mOnProfileClickListener;
     private LiveData<User> mUser;
 
     public ProfileViewModel(Storage storage, BehanceApi api, String username, View.OnClickListener onProfileClickListener) {
-        super();
+        super(storage, api);
         mStorage = storage;
         mApi = api;
         mOnProfileClickListener = onProfileClickListener;

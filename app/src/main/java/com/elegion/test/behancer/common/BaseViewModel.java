@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
  * При их загрузке mIsErrorVisible уже не меняется, а должен.
  * Частично исправлено с помощью вызовы метода setIsErrorVisible при получении данных
  */
-public abstract class BaseViewModel extends ViewModel{
+public abstract class BaseViewModel extends ViewModel {
 
     protected Disposable mDisposable;
     protected Storage mStorage;
@@ -25,9 +25,9 @@ public abstract class BaseViewModel extends ViewModel{
     private MutableLiveData<Boolean> mIsErrorVisible = new MutableLiveData<>();
     private SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = this::updateData;
 
-    public BaseViewModel() {
-        mIsErrorVisible.postValue(false);
-        mIsLoading.postValue(false);
+    public BaseViewModel(Storage storage, BehanceApi api) {
+        mStorage = storage;
+        mApi = api;
     }
 
     @Override

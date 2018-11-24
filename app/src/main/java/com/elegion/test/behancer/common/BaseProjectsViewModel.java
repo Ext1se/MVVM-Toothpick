@@ -25,7 +25,7 @@ public abstract class BaseProjectsViewModel extends BaseViewModel {
 
     public BaseProjectsViewModel(Storage storage, BehanceApi api, ProjectsAdapter.OnItemClickListener onItemClickListener)
     {
-        super();
+        super(storage, api);
         mStorage = storage;
         mApi = api;
         mOnItemClickListener = onItemClickListener;

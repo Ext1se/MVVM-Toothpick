@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
 
-import static com.elegion.test.behancer.ui.profile.ProfileFragment.CLICK_PROFILE;
-import static com.elegion.test.behancer.ui.profile.ProfileFragment.PROFILE_KEY;
+import static com.elegion.test.behancer.di.models.ProfileFragmentModule.PROFILE_CLICK;
+import static com.elegion.test.behancer.di.models.ProfileFragmentModule.PROFILE_USERNAME;
 
 public class ProfileViewModelProvider implements Provider<ProfileViewModel> {
 
@@ -25,10 +25,10 @@ public class ProfileViewModelProvider implements Provider<ProfileViewModel> {
     @Inject
     ProfileFragment mFragment;
     @Inject
-    @Named(PROFILE_KEY)
+    @Named(PROFILE_USERNAME)
     String mUsername;
     @Inject
-    @Named(CLICK_PROFILE)
+    @Named(PROFILE_CLICK)
     View.OnClickListener mOnClickListener;
 
     @Override

@@ -13,19 +13,21 @@ import com.elegion.test.behancer.ui.projects.UserProjectsFragment;
 
 import toothpick.config.Module;
 
-import static com.elegion.test.behancer.ui.profile.ProfileFragment.CLICK_PROFILE;
 import static com.elegion.test.behancer.ui.profile.ProfileFragment.PROFILE_KEY;
 
 public class ProfileFragmentModule extends Module {
+
+    public static final String PROFILE_USERNAME = "PROFILE_USERNAME";
+    public static final String PROFILE_CLICK = "PROFILE_CLICK";
 
     private final ProfileFragment mFragment;
     private String mUsername;
 
     public ProfileFragmentModule(ProfileFragment fragment) {
         mFragment = fragment;
-        bind(ProfileFragment.class).toInstance(mFragment);
-        bind(String.class).withName(PROFILE_KEY).toInstance(provideUsername());
-        bind(View.OnClickListener.class).withName(CLICK_PROFILE).toInstance(provideProfileClickListener());
+        bind(ProfileFragment.class).toInstance(provideProfileFragment());
+        bind(String.class).withName(PROFILE_USERNAME).toInstance(provideUsername());
+        bind(View.OnClickListener.class).withName(PROFILE_CLICK).toInstance(provideProfileClickListener());
         bind(ProfileViewModel.class).toProvider(ProfileViewModelProvider.class).providesSingletonInScope();
     }
 

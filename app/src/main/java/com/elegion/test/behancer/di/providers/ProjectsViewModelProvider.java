@@ -1,25 +1,19 @@
 package com.elegion.test.behancer.di.providers;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.view.View;
 
 import com.elegion.test.behancer.data.Storage;
 import com.elegion.test.behancer.data.api.BehanceApi;
-import com.elegion.test.behancer.ui.profile.ProfileFragment;
-import com.elegion.test.behancer.ui.profile.ProfileViewModel;
 import com.elegion.test.behancer.ui.projects.ProjectsAdapter;
 import com.elegion.test.behancer.ui.projects.ProjectsFragment;
 import com.elegion.test.behancer.ui.projects.ProjectsViewModel;
-import com.elegion.test.behancer.utils.CustomFactoryProfile;
 import com.elegion.test.behancer.utils.CustomFactoryProjects;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
 
-import static com.elegion.test.behancer.common.BaseProjectsFragment.CLICK_ADAPTER;
-import static com.elegion.test.behancer.ui.profile.ProfileFragment.CLICK_PROFILE;
-import static com.elegion.test.behancer.ui.profile.ProfileFragment.PROFILE_KEY;
+import static com.elegion.test.behancer.di.models.ProjectsFragmentModule.PROJECTS_CLICK;
 
 public class ProjectsViewModelProvider implements Provider<ProjectsViewModel> {
 
@@ -30,7 +24,7 @@ public class ProjectsViewModelProvider implements Provider<ProjectsViewModel> {
     @Inject
     ProjectsFragment mFragment;
     @Inject
-    @Named(CLICK_ADAPTER)
+    @Named(PROJECTS_CLICK)
     ProjectsAdapter.OnItemClickListener mOnClickListener;
 
     @Override

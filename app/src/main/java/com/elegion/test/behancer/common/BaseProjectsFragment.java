@@ -22,14 +22,11 @@ import javax.inject.Inject;
 public abstract class BaseProjectsFragment extends BaseFragment {
     public static final String PROFILE_PROJECTS_KEY = "PROFILE_PROJECTS_KEY";
     public static final String STATE_KEY = "STATE_KEY";
-    public static final String CLICK_ADAPTER = "CLICK_ADAPTER";
 
     protected BaseProjectsViewModel mViewModel;
-    protected String mUsername;
 
     private ProjectsBinding mBinding;
     private Parcelable mState = null;
-
 
     @Override
     public void onAttach(Context context) {
@@ -51,18 +48,16 @@ public abstract class BaseProjectsFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (getActivity() != null && mUsername != null) {
-            getActivity().setTitle(mUsername);
-        }
-    }
-
-    @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         mState = getState();
         outState.putParcelable(STATE_KEY, mState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mState = getState();
     }
 
     private Parcelable getState() {
