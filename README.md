@@ -1,1 +1,1 @@
-Coursera projects
+The example of using MVVM and Toothpick.
